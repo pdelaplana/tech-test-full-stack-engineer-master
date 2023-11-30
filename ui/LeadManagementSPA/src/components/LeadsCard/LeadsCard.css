@@ -1,0 +1,18 @@
+.leadsCard{
+    display: flex;
+    flex-direction:column;
+    width:100%;
+}
+
+.leadsCard ion-item-divider.item{
+    margin-top: 0px;
+    min-height: 1px!important;
+}
+
+ion-card{
+    --ion-background-color:var(--ion-card-background);
+}
+
+
+
+

@@ -1,0 +1,9 @@
+ion-toolbar{
+    --ion-background-color:var(--ion-card-background);
+}
+ion-header{
+    --ion-background-color:#eeee;
+}
+ion-content{
+    --ion-background-color:#eeee;
+}

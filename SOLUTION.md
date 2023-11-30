@@ -5,13 +5,13 @@ hipages Full Stack Technical Interview Solution
 This fullstack solution has been built as part of hipages full stack engineer technical interview process.  It is comprised of the following projects:
 
 ### Frontend 
-The frontend SPA application has been built using Ionic Framework 7 in React.  
+The frontend SPA application has been built using Ionic Framework 7 in React.  The source code can be found in `./ui/LeadManagementSPA`.
 
 I chose the Ionic Framework since it provided a rich set of components that closely met the UI requirements for this solution.  Morever, its cross-platform approach allows the same codebase to be compiled to both IOS and Android as well as deploy as a PWA. This means we can quickly pivot to delivering native applications or a PWA in future iterations.  Being able to run it on the web browser is a definite bonus.       
 
 
 ### Backend
-The backend server is built using NodeJS / ExpressJS.  
+The backend server is built using NodeJS / ExpressJS.  The source code can be found in `./server`
 
 To promote seperation of concerns and future extensibility, I opted to architect the backend as a middleware (expressjs) application (ie `jobsController`) that implements endpoint handlers for client http requests.  Additional middleware applications can be added in the future for specific domain objects such as categories and suburbs.  Also, I have made use of the CQRS pattern to abstract data access to the MySQL database.  
 
@@ -57,7 +57,7 @@ docker compose up -d
 
 This will create and run three containers for the Ionic ui, NodeJS server and MySQL database respectively.  
 
-Once all containers are up and running, you should be able to reach the teh ui and server at the following urls:
+Once all containers are up and running, you should be able to reach the ui and server at the following urls:
 
 * backend: http://localhost:8080
 * frontend: http://localhost:8100

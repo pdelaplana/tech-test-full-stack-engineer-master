@@ -64,8 +64,10 @@ const LeadsCard: React.FC<LeadsCardPops> = ({
 
     useEffect(() =>{
         if (response) {
-            presentNotification('The status has been changed.');
-            onUpdate();
+            if (Array.isArray(response) && response.length > 0) {
+                presentNotification(`The status of job ${response[0].id} has been changed to ${response[0].status}.`);
+                onUpdate();
+            }
         }
     },[response])
 
@@ -117,6 +119,11 @@ const LeadsCard: React.FC<LeadsCardPops> = ({
         return formatter.format(value);
     }
 
+    const formatName = (value:string) => {
+
+        return (status === 'accepted') ? value : value.split(' ')[0];
+    }
+
     return(
         <IonCard className={"leadsCard"} mode="md" > 
             <IonCardHeader>
@@ -126,7 +133,7 @@ const LeadsCard: React.FC<LeadsCardPops> = ({
                     </div>
                     <div className="ion-float-left ion-margin-start">
                         <IonText >
-                            {contactName}
+                            {formatName(contactName)}
                         </IonText>
                         <IonCardSubtitle>{formatDate(dateCreated)}</IonCardSubtitle>
                     </div>
@@ -138,8 +145,8 @@ const LeadsCard: React.FC<LeadsCardPops> = ({
                     <IonIcon icon={locationSharp} className="ion-margin-top"/> &nbsp;
                     <IonText>{suburb} {postcode}</IonText>
                 </span>
-                <span className="ion-margin-end">
-                    <IonIcon icon={briefcaseSharp} /> &nbsp;
+                <span className="ion-margin-end" >
+                    <IonIcon icon={briefcaseSharp} className="ion-margin-top"/> &nbsp;
                     <IonText>{category}</IonText>
                 </span>
                 <span className="ion-margin-end">
@@ -154,11 +161,11 @@ const LeadsCard: React.FC<LeadsCardPops> = ({
                 <IonItemDivider/>
                 <IonCardContent>
                     <span className="ion-margin-end">
-                        <IonIcon icon={phonePortraitSharp} size="small"  /> 
+                        <IonIcon icon={phonePortraitSharp}  /> &nbsp;
                         <IonText color="primary"> {contactPhone} </IonText>
                     </span>
                     <span className="ion-margin-end">
-                        <IonIcon icon={mailSharp} size="small" /> 
+                        <IonIcon icon={mailSharp}  /> &nbsp;
                         <IonText color="primary"> {contactEmail}</IonText>
                     </span>
                 </IonCardContent>
